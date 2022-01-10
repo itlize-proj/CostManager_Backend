@@ -17,15 +17,13 @@ public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer projectId;
-
     @Column
     private String projectName;
-
     @CreatedDate
     private Date timeCreated;
-
     @ManyToOne(targetEntity = User.class)
     private User user;
+
 
     @JsonIgnore
     @OneToMany(targetEntity = ResourceToProject.class, cascade = CascadeType.REMOVE, mappedBy = "project")
