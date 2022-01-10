@@ -18,7 +18,7 @@ public class Resources {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int resourceId;
     @Column
-    private int resourceCode;
+    private String resourceCode;
     @Column
     private String resourceName;
 
@@ -40,7 +40,7 @@ public class Resources {
     public Resources() {
     }
 
-    public Resources(int resourceId, int resourceCode, String resourceName, Date timeCreated, Date lastUpdated, Set<ResourceToProject> projects, Set<ResourceColumn> resourceColumns) {
+    public Resources(int resourceId, String resourceCode, String resourceName, Date timeCreated, Date lastUpdated, Set<ResourceToProject> projects, Set<ResourceColumn> resourceColumns) {
         this.resourceId = resourceId;
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
@@ -58,11 +58,11 @@ public class Resources {
         this.resourceId = resourceId;
     }
 
-    public int getResourceCode() {
+    public String getResourceCode() {
         return resourceCode;
     }
 
-    public void setResourceCode(int resourceCode) {
+    public void setResourceCode(String resourceCode) {
         this.resourceCode = resourceCode;
     }
 

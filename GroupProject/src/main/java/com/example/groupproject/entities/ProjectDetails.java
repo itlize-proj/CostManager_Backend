@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "resource_column")
+@Table(name = "project_details")
 public class ProjectDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

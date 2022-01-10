@@ -11,7 +11,6 @@ public class ResourceColumn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int resourceDetailId;
-
     @Column
     private String detailValue;
     @Column
