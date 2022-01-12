@@ -10,7 +10,7 @@ import java.sql.Date;
 public class ResourceColumn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int resourceDetailId;
+    private int resourceColumnId;
     @Column
     private String detailValue;
     @Column
@@ -29,8 +29,8 @@ public class ResourceColumn {
     public ResourceColumn() {
     }
 
-    public ResourceColumn(int resourceDetailId, String detailValue, String formulaValue, Date timeCreated, Date lastUpdated, Resources resources, ProjectDetails projectDetails) {
-        this.resourceDetailId = resourceDetailId;
+    public ResourceColumn(int resourceColumnId, String detailValue, String formulaValue, Date timeCreated, Date lastUpdated, Resources resources, ProjectDetails projectDetails) {
+        this.resourceColumnId = resourceColumnId;
         this.detailValue = detailValue;
         this.formulaValue = formulaValue;
         this.timeCreated = timeCreated;
@@ -39,12 +39,12 @@ public class ResourceColumn {
         this.projectDetails = projectDetails;
     }
 
-    public int getResourceDetailId() {
-        return resourceDetailId;
+    public int getResourceColumnId() {
+        return resourceColumnId;
     }
 
-    public void setResourceDetailId(int resourceDetailId) {
-        this.resourceDetailId = resourceDetailId;
+    public void setResourceColumnId(int resourceDetailId) {
+        this.resourceColumnId = resourceDetailId;
     }
 
     public String getDetailValue() {
@@ -98,7 +98,7 @@ public class ResourceColumn {
     @Override
     public String toString() {
         return "ResourceColumn{" +
-                "resourceDetailId=" + resourceDetailId +
+                "resourceDetailId=" + resourceColumnId +
                 ", detailValue='" + detailValue + '\'' +
                 ", formulaValue='" + formulaValue + '\'' +
                 ", timeCreated=" + timeCreated +
