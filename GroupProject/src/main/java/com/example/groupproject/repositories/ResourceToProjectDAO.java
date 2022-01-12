@@ -11,7 +11,7 @@ import java.util.Optional;
 
 @Repository
 public interface ResourceToProjectDAO extends JpaRepository<ResourceToProject, Integer> {
-    ResourceToProject findByProjectAndResource(Project project, Resources resources);
+    ResourceToProject findByProjectAndResources(Project project, Resources resources);
     Optional<List<ResourceToProject>> findByProject(Project project);
     void deleteByResourcesAndProject(Project project, Resources resources);
 }

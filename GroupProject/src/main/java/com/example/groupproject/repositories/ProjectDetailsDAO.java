@@ -6,9 +6,10 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface ProjectDetailsDAO extends JpaRepository<ProjectDetails, Integer> {
-    public List<ProjectDetails> findProjectDetailsByDetailId(int detailId);
-    public List<ProjectDetails> findProjectDetailsByProject(Project project);
+    Optional<ProjectDetails> findProjectDetailsByDetailId(int detailId);
+    Optional<List<ProjectDetails>> findProjectDetailsByProject(Project project);
 }
