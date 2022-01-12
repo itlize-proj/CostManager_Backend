@@ -9,10 +9,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.ComponentScan;
-import org.springframework.context.annotation.ComponentScans;
-import org.springframework.test.annotation.Rollback;
-import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
@@ -55,15 +51,27 @@ class ProjectDAOTest {
 
         Optional<List<Project>> projects = projectDAO.findAllByUser(user);
         Assert.assertNotNull(projects.get());
-        //Assert.assertEquals();
+        if(projects.get() != null)
+            Assert.assertEquals(projects.get().get(0), project1);
     }
 
     @Test
     @Transactional
     void findProjectByProjectName() {
+        Project project = new Project();
+        project.setProjectName("projectTest");
+        projectDAO.save(project);
+        Optional<Project> projectTest = projectDAO.findProjectByProjectName("projectTest");
+        Assert.assertNotNull(projectTest.get());
     }
 
     @Test
+    @Transactional
     void findAll() {
+        Project project = new Project();
+        project.setProjectName("projectTest");
+        projectDAO.save(project);
+        List<Project> projects = projectDAO.findAll();
+        Assert.assertNotNull(projects);
     }
 }
