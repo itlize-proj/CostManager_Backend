@@ -11,6 +11,6 @@ import java.util.List;
 @Repository
 public interface ResourceToProjectDAO extends JpaRepository<ResourceToProject, Integer> {
 
-    public List<ResourceToProject> findByProjectAndResource(Project project, Resources resources);
+    public List<ResourceToProject> findByProjectAndResources(Project project, Resources resources);
     public List<ResourceToProject> findByProject(Project project);
 }
