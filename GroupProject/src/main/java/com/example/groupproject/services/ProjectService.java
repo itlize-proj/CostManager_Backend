@@ -1,53 +1,20 @@
 package com.example.groupproject.services;
 
 import com.example.groupproject.entities.Project;
-import com.example.groupproject.repositories.ProjectDAO;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import com.example.groupproject.entities.User;
 
 import java.util.List;
 
-@Service
-public class ProjectService {
-    @Autowired
-    private ProjectDAO projectDAO;
+public interface ProjectService {
+    List<Project> findByUser(User user);
 
-    // GET
-    // get all project
-    public List<Project> getAll () {
-        return projectDAO.findAll();
-    }
+    void createByUser(User user, Project project);
 
-    // get project by project ID
-    public Project getProjectById (Integer id) {
-        return projectDAO.findById(id).get();
-    }
+    void deleteByUser(User user, Integer projectId);
 
-    // get project by project Name
-    public Project getProjectByName(String name) {
-        List<Project> list = projectDAO.findAll();
-        list.stream().filter(p ->(p.getProjectName().equals(name)));
-        Project project = list.get(0);
-        return project;
-    }
+     List<Project> getAll();
 
-    // UPDATE
-    public void update(Project project) {
-        projectDAO.save(project);
-    }
-    // CREATE
-    public void create(Project project) {
-        projectDAO.save(project);
-    }
+     List<Project> getAllByUser(User user);
 
-    // DELETE
-    // delete project by ID
-    public void deleteProjectById(int id) {
-        projectDAO.deleteById(id);
-    }
-    // delete project by name
-    public void deleteProjectByName(String name) {
-        projectDAO.delete(getProjectByName(name));
-    }
-
+     Project getProjectByProjectName(String name);
 }

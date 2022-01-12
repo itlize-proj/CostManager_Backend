@@ -7,8 +7,11 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
+import java.sql.Array;
 import java.sql.Date;
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,12 +41,12 @@ public class ProjectDetails {
     @JsonIgnore
     @OneToMany(targetEntity = ResourceColumn.class, cascade = CascadeType.REMOVE, mappedBy = "projectDetails")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<ResourceColumn> resourceColumns = new HashSet<>();
+    private List<ResourceColumn> resourceColumns = new ArrayList<>();
 
     public ProjectDetails() {
     }
 
-    public ProjectDetails(int detailId, int resourceId, String detailName, FormulaType formulaType, String formulaText, Date timeCreated, Date lastUpdated, Project project, Set<ResourceColumn> resourceColumns) {
+    public ProjectDetails(int detailId, int resourceId, String detailName, FormulaType formulaType, String formulaText, Date timeCreated, Date lastUpdated, Project project, List<ResourceColumn> resourceColumns) {
         this.detailId = detailId;
         this.resourceId = resourceId;
         this.detailName = detailName;
@@ -119,11 +122,11 @@ public class ProjectDetails {
         this.project = project;
     }
 
-    public Set<ResourceColumn> getResourceDetails() {
+    public List<ResourceColumn> getResourceDetails() {
         return resourceColumns;
     }
 
-    public void setResourceDetails(Set<ResourceColumn> resourceColumns) {
+    public void setResourceDetails(List<ResourceColumn> resourceColumns) {
         this.resourceColumns = resourceColumns;
     }
 
