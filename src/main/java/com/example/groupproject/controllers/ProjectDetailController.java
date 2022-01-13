@@ -15,6 +15,11 @@ public class ProjectDetailController {
     @Autowired
     private ProjectDetailService projectDetailService;
 
+    @GetMapping
+    public String Hello() {
+        return "Hello";
+    }
+
     @GetMapping("/getProjectDetailById/{id}")
     public ResponseEntity<?> getProjectDetailsById (@PathVariable Integer id) {
         ProjectDetail projectDetail = projectDetailService.get(id);

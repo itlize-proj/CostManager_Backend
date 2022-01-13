@@ -6,15 +6,13 @@ import com.example.groupproject.entities.User;
 import java.util.List;
 
 public interface ProjectService {
-    List<Project> findByUser(User user);
+    List<Project> getByUser(User user);
 
     void createByUser(User user, Project project);
 
     void deleteByUser(User user, Integer projectId);
 
      List<Project> getAll();
-
-     List<Project> getAllByUser(User user);
 
      Project getProjectByProjectName(String name);
 }
