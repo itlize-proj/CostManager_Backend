@@ -12,8 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "project_details")
-public class ProjectDetails {
+@Table(name = "project_detail")
+public class ProjectDetail {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int detailId;
@@ -36,14 +36,14 @@ public class ProjectDetails {
 
 
     @JsonIgnore
-    @OneToMany(targetEntity = ResourceColumn.class, cascade = CascadeType.REMOVE, mappedBy = "projectDetails")
+    @OneToMany(targetEntity = ResourceColumn.class, cascade = CascadeType.REMOVE, mappedBy = "projectDetail")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<ResourceColumn> resourceColumns = new HashSet<>();
 
-    public ProjectDetails() {
+    public ProjectDetail() {
     }
 
-    public ProjectDetails(int detailId, int resourceId, String detailName, FormulaType formulaType, String formulaText, Date timeCreated, Date lastUpdated, Project project, Set<ResourceColumn> resourceColumns) {
+    public ProjectDetail(int detailId, int resourceId, String detailName, FormulaType formulaType, String formulaText, Date timeCreated, Date lastUpdated, Project project, Set<ResourceColumn> resourceColumns) {
         this.detailId = detailId;
         this.resourceId = resourceId;
         this.detailName = detailName;
@@ -129,7 +129,7 @@ public class ProjectDetails {
 
     @Override
     public String toString() {
-        return "ProjectDetails{" +
+        return "ProjectDetail{" +
                 "detailId=" + detailId +
                 ", resourceId=" + resourceId +
                 ", detailName='" + detailName + '\'' +

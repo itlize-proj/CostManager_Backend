@@ -1,7 +1,7 @@
 package com.example.groupproject.services.serviceImp;
 
-import com.example.groupproject.entities.Resources;
-import com.example.groupproject.repositories.ResourcesDAO;
+import com.example.groupproject.entities.Resource;
+import com.example.groupproject.repositories.ResourceRepository;
 import com.example.groupproject.services.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -10,39 +10,39 @@ import java.util.List;
 @Service
 public class ResourcesServiceImp implements ResourceService {
     @Autowired
-    private ResourcesDAO resourcesDAO;
+    private ResourceRepository resourceRepository;
 
 
     @Override
-    public Resources getByResourceCode(String code) {
-        return resourcesDAO.findResourcesByResourceCode(code).get();
+    public Resource getByResourceCode(String code) {
+        return resourceRepository.findResourceByResourceCode(code).get();
     }
 
     @Override
-    public Resources getByResourceName(String name) {
-        return resourcesDAO.findResourcesByResourceName(name).get();
+    public Resource getByResourceName(String name) {
+        return resourceRepository.findResourceByResourceName(name).get();
     }
 
     @Override
-    public List<Resources> getAll() {
-        return resourcesDAO.findAll();
+    public List<Resource> getAll() {
+        return resourceRepository.findAll();
     }
 
     @Override
-    public void addResource(Resources resources) {
-        if (resources == null) {
+    public void addResource(Resource resource) {
+        if (resource == null) {
             System.out.println("Resource is Empty");
         } else {
-            resourcesDAO.save(resources);
+            resourceRepository.save(resource);
         }
     }
 
     @Override
-    public void updateResource(Resources resources) {
-        if (resources == null) {
+    public void updateResource(Resource resource) {
+        if (resource == null) {
             System.out.println("Resource is Empty");
         } else {
-            resourcesDAO.save(resources);
+            resourceRepository.save(resource);
         }
     }
     // Can't have Delete method  !!

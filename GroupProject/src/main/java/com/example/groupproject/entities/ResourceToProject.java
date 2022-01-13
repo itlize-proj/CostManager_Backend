@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "resourceToProject")
+@Table(name = "resource_to_project")
 public class ResourceToProject {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,17 +18,17 @@ public class ResourceToProject {
     @ManyToOne(targetEntity = Project.class, cascade = CascadeType.DETACH)
     private Project project;
 
-    @ManyToOne(targetEntity = Project.class, cascade = CascadeType.DETACH)
-    private Resources resources;
+    @ManyToOne(targetEntity = Resource.class, cascade = CascadeType.DETACH)
+    private Resource resource;
 
     public ResourceToProject() {
     }
 
-    public ResourceToProject(int resourceToProjectId, Date timeCreated, Project project, Resources resources) {
+    public ResourceToProject(int resourceToProjectId, Date timeCreated, Project project, Resource resource) {
         this.resourceToProjectId = resourceToProjectId;
         this.timeCreated = timeCreated;
         this.project = project;
-        this.resources = resources;
+        this.resource = resource;
     }
 
     public Date getTimeCreated() {
@@ -55,12 +55,12 @@ public class ResourceToProject {
         this.project = project;
     }
 
-    public Resources getResources() {
-        return resources;
+    public Resource getResources() {
+        return resource;
     }
 
-    public void setResources(Resources resources) {
-        this.resources = resources;
+    public void setResources(Resource resource) {
+        this.resource = resource;
     }
 
     @Override
@@ -69,7 +69,7 @@ public class ResourceToProject {
                 "resourceToProjectId=" + resourceToProjectId +
                 ", timeCreated=" + timeCreated +
                 ", project=" + project +
-                ", resources=" + resources +
+                ", resource=" + resource +
                 '}';
     }
 }

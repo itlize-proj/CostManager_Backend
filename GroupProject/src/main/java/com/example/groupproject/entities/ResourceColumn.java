@@ -6,7 +6,7 @@ import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "resourceColumn")
+@Table(name = "resource_column")
 public class ResourceColumn {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,23 +20,23 @@ public class ResourceColumn {
     @LastModifiedDate
     private Date lastUpdated;
 
-    @ManyToOne(targetEntity = Resources.class, cascade = CascadeType.DETACH)
-    private Resources resources;
+    @ManyToOne(targetEntity = Resource.class, cascade = CascadeType.DETACH)
+    private Resource resource;
 
-    @ManyToOne(targetEntity = ProjectDetails.class, cascade = CascadeType.DETACH)
-    private ProjectDetails projectDetails;
+    @ManyToOne(targetEntity = ProjectDetail.class, cascade = CascadeType.DETACH)
+    private ProjectDetail projectDetail;
 
     public ResourceColumn() {
     }
 
-    public ResourceColumn(int resourceColumnId, String detailValue, String formulaValue, Date timeCreated, Date lastUpdated, Resources resources, ProjectDetails projectDetails) {
+    public ResourceColumn(int resourceColumnId, String detailValue, String formulaValue, Date timeCreated, Date lastUpdated, Resource resource, ProjectDetail projectDetail) {
         this.resourceColumnId = resourceColumnId;
         this.detailValue = detailValue;
         this.formulaValue = formulaValue;
         this.timeCreated = timeCreated;
         this.lastUpdated = lastUpdated;
-        this.resources = resources;
-        this.projectDetails = projectDetails;
+        this.resource = resource;
+        this.projectDetail = projectDetail;
     }
 
     public int getResourceColumnId() {
@@ -79,20 +79,20 @@ public class ResourceColumn {
         this.lastUpdated = lastUpdated;
     }
 
-    public Resources getResources() {
-        return resources;
+    public Resource getResources() {
+        return resource;
     }
 
-    public void setResources(Resources resources) {
-        this.resources = resources;
+    public void setResources(Resource resource) {
+        this.resource = resource;
     }
 
-    public ProjectDetails getProjectDetails() {
-        return projectDetails;
+    public ProjectDetail getProjectDetails() {
+        return projectDetail;
     }
 
-    public void setProjectDetails(ProjectDetails projectDetails) {
-        this.projectDetails = projectDetails;
+    public void setProjectDetails(ProjectDetail projectDetail) {
+        this.projectDetail = projectDetail;
     }
 
     @Override
@@ -103,8 +103,8 @@ public class ResourceColumn {
                 ", formulaValue='" + formulaValue + '\'' +
                 ", timeCreated=" + timeCreated +
                 ", lastUpdated=" + lastUpdated +
-                ", resources=" + resources +
-                ", projectDetails=" + projectDetails +
+                ", resource=" + resource +
+                ", projectDetail=" + projectDetail +
                 '}';
     }
 }
