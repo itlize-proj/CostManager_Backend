@@ -27,7 +27,5 @@ jobs:
         path: ~/.m2
         key: ${{ runner.os }}-m2-${{ hashFiles('**/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
-    - name: Build with Maven
-      run: mvn -B package --file GroupProject/pom.xml
     - name: Run tests with Maven
       run: mvn -B test --activate-profiles test,-local --file GroupProject/pom.xml
