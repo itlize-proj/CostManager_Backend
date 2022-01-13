@@ -12,7 +12,7 @@ public interface ResourceService {
 
     List<Resource> getAll();
 
-    void addResource(Resource resource);
+    boolean create(Resource resource);
 
-    void updateResource(Resource resource);
+    boolean update(Resource resource);
 }

@@ -7,7 +7,7 @@ import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
-import java.sql.Date;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -23,7 +23,7 @@ public class Resource {
     private String resourceName;
 
     @CreatedDate
-    private java.sql.Date timeCreated;
+    private Date timeCreated;
     @LastModifiedDate
     private Date lastUpdated;
 
