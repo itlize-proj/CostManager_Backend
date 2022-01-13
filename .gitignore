@@ -1,8 +1,6 @@
 HELP.md
-target/
-!.mvn/wrapper/maven-wrapper.jar
-!**/src/main/**/target/
-!**/src/test/**/target/
+GroupProject/target/**
+
 
 ### STS ###
 .apt_generated
@@ -15,6 +13,8 @@ target/
 
 ### IntelliJ IDEA ###
 .idea
+*.class
+*.lst
 *.iws
 *.iml
 *.ipr
@@ -37,3 +37,5 @@ GroupProject/src/main/resources/application.yml
 .idea/modules.xml
 .idea/CostManager_Backend.iml
 GroupProject/src/main/resources/application.yml
+**/classes/**
+**/surefire-reports/**
