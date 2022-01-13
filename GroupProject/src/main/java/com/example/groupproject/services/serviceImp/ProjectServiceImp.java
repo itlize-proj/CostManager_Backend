@@ -38,7 +38,7 @@ public class ProjectServiceImp implements ProjectService {
         }
         try {
             projectDAO.save(project);
-            List<Project> list = new ArrayList<>();
+            HashSet<Project> list = new HashSet<>();
             list.add(project);
             user.setProjects(list);
             userDAO.save(user);

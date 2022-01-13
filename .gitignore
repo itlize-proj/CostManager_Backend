@@ -4,3 +4,5 @@ GroupProject/src/main/resources/application.yml
 .idea/CostManager_Backend.iml
 GroupProject/src/main/resources/application.yml
 GroupProject/src/main/resources/application.yml
+GroupProject/src/main/resources/application.yml
+*.yml
