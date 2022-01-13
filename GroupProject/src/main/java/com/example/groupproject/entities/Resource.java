@@ -12,8 +12,8 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "resources")
-public class Resources {
+@Table(name = "resource")
+public class Resource {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int resourceId;
@@ -28,19 +28,19 @@ public class Resources {
     private Date lastUpdated;
 
     @JsonIgnore
-    @OneToMany(targetEntity = ResourceToProject.class, cascade = CascadeType.REMOVE, mappedBy = "resources")
+    @OneToMany(targetEntity = ResourceToProject.class, cascade = CascadeType.REMOVE, mappedBy = "resource")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<ResourceToProject> projects = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(targetEntity = ResourceToProject.class, cascade = CascadeType.REMOVE, mappedBy = "resources")
+    @OneToMany(targetEntity = ResourceColumn.class, cascade = CascadeType.REMOVE, mappedBy = "resource")
     @LazyCollection(LazyCollectionOption.FALSE)
     private Set<ResourceColumn> resourceColumns = new HashSet<>();
 
-    public Resources() {
+    public Resource() {
     }
 
-    public Resources(int resourceId, String resourceCode, String resourceName, Date timeCreated, Date lastUpdated, Set<ResourceToProject> projects, Set<ResourceColumn> resourceColumns) {
+    public Resource(int resourceId, String resourceCode, String resourceName, Date timeCreated, Date lastUpdated, Set<ResourceToProject> projects, Set<ResourceColumn> resourceColumns) {
         this.resourceId = resourceId;
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
@@ -108,7 +108,7 @@ public class Resources {
 
     @Override
     public String toString() {
-        return "Resources{" +
+        return "Resource{" +
                 "resourceId=" + resourceId +
                 ", resourceCode=" + resourceCode +
                 ", resourceName='" + resourceName + '\'' +

@@ -12,7 +12,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
-@Table(name = "projects")
+@Table(name = "project")
 public class Project {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -31,16 +31,16 @@ public class Project {
     private Set<ResourceToProject> resources = new HashSet<>();
 
     @JsonIgnore
-    @OneToMany(targetEntity = ProjectDetails.class, cascade = CascadeType.REMOVE, mappedBy = "project")
+    @OneToMany(targetEntity = ProjectDetail.class, cascade = CascadeType.REMOVE, mappedBy = "project")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private Set<ProjectDetails> projectDetails = new HashSet<>();
+    private Set<ProjectDetail> projectDetails = new HashSet<>();
 
 
     public Project() {
     }
 
 
-    public Project(Integer projectId, String projectName, Date timeCreated, User user, Set<ResourceToProject> resources, Set<ProjectDetails> projectDetails) {
+    public Project(Integer projectId, String projectName, Date timeCreated, User user, Set<ResourceToProject> resources, Set<ProjectDetail> projectDetails) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.timeCreated = timeCreated;
@@ -89,11 +89,11 @@ public class Project {
         this.resources = resources;
     }
 
-    public Set<ProjectDetails> getProjectDetails() {
+    public Set<ProjectDetail> getProjectDetails() {
         return projectDetails;
     }
 
-    public void setProjectDetails(Set<ProjectDetails> projectDetails) {
+    public void setProjectDetails(Set<ProjectDetail> projectDetails) {
         this.projectDetails = projectDetails;
     }
 

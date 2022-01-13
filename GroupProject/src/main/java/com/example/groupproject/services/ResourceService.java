@@ -1,18 +1,18 @@
 package com.example.groupproject.services;
 
-import com.example.groupproject.entities.Resources;
+import com.example.groupproject.entities.Resource;
 
 import java.util.List;
 
 public interface ResourceService {
     // get
-    Resources getByResourceCode(String code);
+    Resource getByResourceCode(String code);
 
-    Resources getByResourceName(String name);
+    Resource getByResourceName(String name);
 
-    List<Resources> getAll();
+    List<Resource> getAll();
 
-    void addResource(Resources resources);
+    void addResource(Resource resource);
 
-    void updateResource(Resources resources);
+    void updateResource(Resource resource);
 }

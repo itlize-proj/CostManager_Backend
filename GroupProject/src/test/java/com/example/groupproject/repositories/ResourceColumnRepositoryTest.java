@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-class ResourceColumnDAOTest {
+class ResourceColumnRepositoryTest {
 
     @Test
     void findByResourceColumnId() {

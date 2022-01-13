@@ -1,9 +1,7 @@
 package com.example.groupproject.repositories;
 
-import com.example.groupproject.GroupProjectApplication;
 import com.example.groupproject.entities.Project;
 import com.example.groupproject.entities.User;
-import com.example.groupproject.repositories.ProjectDAO;
 import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -15,23 +13,21 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 @SpringBootTest
 @RunWith(SpringRunner.class)
-class ProjectDAOTest {
+class ProjectRepositoryTest {
     @Autowired
-    private ProjectDAO projectDAO;
+    private ProjectRepository projectRepository;
     @Autowired
-    private UserDAO userDAO;
+    private UserRepository userRepository;
     @Test
     @Transactional
     void findByProjectId() {
         Project project = new Project();
         project.setProjectName("project1");
-        projectDAO.save(project);
+        projectRepository.save(project);
 
-        Optional<Project> projectTest = projectDAO.findByProjectId(project.getProjectId());
+        Optional<Project> projectTest = projectRepository.findByProjectId(project.getProjectId());
         Assert.assertNotNull(projectTest.get());
     }
 
@@ -45,11 +41,11 @@ class ProjectDAOTest {
         project1.setUser(user);
         project2.setUser(user);
 
-        userDAO.save(user);
-        projectDAO.save(project1);
-        projectDAO.save(project2);
+        userRepository.save(user);
+        projectRepository.save(project1);
+        projectRepository.save(project2);
 
-        Optional<List<Project>> projects = projectDAO.findAllByUser(user);
+        Optional<List<Project>> projects = projectRepository.findAllByUser(user);
         Assert.assertNotNull(projects.get());
         if(projects.get() != null)
             Assert.assertEquals(projects.get().get(0), project1);
@@ -60,8 +56,8 @@ class ProjectDAOTest {
     void findProjectByProjectName() {
         Project project = new Project();
         project.setProjectName("projectTest");
-        projectDAO.save(project);
-        Optional<Project> projectTest = projectDAO.findProjectByProjectName("projectTest");
+        projectRepository.save(project);
+        Optional<Project> projectTest = projectRepository.findProjectByProjectName("projectTest");
         Assert.assertNotNull(projectTest.get());
     }
 
@@ -70,8 +66,8 @@ class ProjectDAOTest {
     void findAll() {
         Project project = new Project();
         project.setProjectName("projectTest");
-        projectDAO.save(project);
-        List<Project> projects = projectDAO.findAll();
+        projectRepository.save(project);
+        List<Project> projects = projectRepository.findAll();
         Assert.assertNotNull(projects);
     }
 }

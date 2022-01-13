@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public interface ProjectDAO extends JpaRepository<Project, Integer> {
+public interface ProjectRepository extends JpaRepository<Project, Integer> {
     Optional<Project> findByProjectId(int ProjectId);
     Optional<List<Project>> findAllByUser(User user);
     Optional<Project> findProjectByProjectName(String projectName);

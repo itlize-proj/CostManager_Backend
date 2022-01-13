@@ -17,15 +17,15 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 public class ResourceToProjectTests {
     @Autowired
-    private ProjectDetailsDAO projectDetailsDAO;
+    private ProjectDetailRepository projectDetailRepository;
     @Autowired
-    private UserDAO userDAO;
+    private UserRepository userRepository;
     @Autowired
-    private ResourcesDAO resourcesDAO;
+    private ResourceRepository resourceRepository;
     @Autowired
-    private ProjectDAO projectDAO;
+    private ProjectRepository projectRepository;
     @Autowired
-    private ResourceToProjectDAO resourceToProjectDAO;
+    private ResourceToProjectRepository resourceToProjectRepository;
 
 
     @Test
@@ -34,30 +34,30 @@ public class ResourceToProjectTests {
     public void ProjectToResourceTest() {
         Project project = new Project();
         User user = new User();
-        Resources resources = new Resources();
-        ProjectDetails projectDetails = new ProjectDetails();
+        Resource resource = new Resource();
+        ProjectDetail projectDetail = new ProjectDetail();
         ResourceToProject resourceToProject = new ResourceToProject();
 
         user.setUserId(10);
         user.setTitle("Mr.");
         user.setFirstName("H");
         user.setEmail("123@gmail.com");
-        userDAO.save(user);
+        userRepository.save(user);
 
-        resources.setResourceCode("000000");
-        resourcesDAO.save(resources);
+        resource.setResourceCode("000000");
+        resourceRepository.save(resource);
 
         project.setProjectName("project1");
-        projectDAO.save(project);
+        projectRepository.save(project);
 
-        projectDetails.setProject(project);
-        projectDetailsDAO.save(projectDetails);
+        projectDetail.setProject(project);
+        projectDetailRepository.save(projectDetail);
 
         resourceToProject.setProject(project);
-        resourceToProject.setResources(resources);
-        resourceToProjectDAO.save(resourceToProject);
+        resourceToProject.setResources(resource);
+        resourceToProjectRepository.save(resourceToProject);
 
-        List<ResourceToProject> list = resourceToProjectDAO.findAll();
+        List<ResourceToProject> list = resourceToProjectRepository.findAll();
         Assert.assertEquals(1,list.size());
         Assert.assertEquals(resourceToProject.getProject(), list.get(0).getProject());
 
