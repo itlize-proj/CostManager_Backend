@@ -19,7 +19,7 @@ public class ProjectServiceImp implements ProjectService {
     private UserRepository userRepository;
 
     @Override
-    public List<Project> findByUser(User user) {
+    public List<Project> getByUser(User user) {
         if (user == null) {
             System.out.println("User is not existed");
         }
@@ -46,17 +46,16 @@ public class ProjectServiceImp implements ProjectService {
     @Override
     public void deleteByUser(User user, Integer projectId) {
         Project project = projectRepository.findById(projectId).orElse(null);
-        projectRepository.delete(project);
+        if (project.getUser().equals(user)) {
+            projectRepository.delete(project);
+        } else {
+            System.out.println("It doesn't belong to this user");
+        }
     }
 
     @Override
     public List<Project> getAll() {
         return projectRepository.findAll();
-    }
-
-    @Override
-    public List<Project> getAllByUser(User user) {
-        return projectRepository.findAllByUser(user).get();
     }
 
     @Override

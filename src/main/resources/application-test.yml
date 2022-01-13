@@ -7,9 +7,9 @@ spring:
       password: admin
   datasource:
     driver-class-name: org.postgresql.Driver
-    username: nhtgtadzolvmwx
-    password: 1be1c3ef65ca4216675e60db65d8ab0361b46e55e014f76d1b3934ec73c23667
-    url: jdbc:postgresql://ec2-3-225-41-234.compute-1.amazonaws.com:5432/db418n8fgfk7de
+    username: ydnhcfwmzkfbdg
+    password: c3c96ff80af2201effa2e6d14192110a3deb9e8033d42959fb6041489dde3cf1
+    url: jdbc:postgresql://ec2-54-224-64-114.compute-1.amazonaws.com:5432/d79vrmch5eamf9
   jpa:
     hibernate:
       ddl-auto: create
