@@ -5,6 +5,10 @@ import com.example.groupproject.repositories.ResourceRepository;
 import com.example.groupproject.services.ResourceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.Instant;
+import java.time.ZoneOffset;
+import java.util.Date;
 import java.util.List;
 
 @Service
@@ -29,20 +33,29 @@ public class ResourcesServiceImp implements ResourceService {
     }
 
     @Override
-    public void addResource(Resource resource) {
-        if (resource == null) {
-            System.out.println("Resource is Empty");
+    public boolean create(Resource resource) {
+        if (resource == null && !resourceRepository.findResourceByResourceCode(resource.getResourceCode()).isPresent()) {
+            System.out.println("Resource is Empty/Resource already exists");
+            return false;
         } else {
+            Instant now = Instant.now();
+            resource.setLastUpdated(Date.from(now));
+            resource.setTimeCreated(Date.from(now));
             resourceRepository.save(resource);
+            return true;
         }
     }
 
     @Override
-    public void updateResource(Resource resource) {
-        if (resource == null) {
-            System.out.println("Resource is Empty");
+    public boolean update(Resource resource) {
+        if (resource == null && resourceRepository.findResourceByResourceCode(resource.getResourceCode()).isPresent()) {
+            System.out.println("Resource is Empty/doesn't exist");
+            return false;
         } else {
+            Instant now = Instant.now();
+            resource.setLastUpdated(Date.from(now));
             resourceRepository.save(resource);
+            return true;
         }
     }
     // Can't have Delete method  !!

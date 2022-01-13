@@ -3,10 +3,15 @@ package com.example.groupproject.repositories;
 import com.example.groupproject.entities.Project;
 import com.example.groupproject.entities.User;
 import org.junit.Assert;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import javax.transaction.Transactional;
@@ -14,14 +19,15 @@ import java.util.List;
 import java.util.Optional;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
+@ExtendWith(SpringExtension.class)
+@Transactional
 class ProjectRepositoryTest {
     @Autowired
     private ProjectRepository projectRepository;
     @Autowired
     private UserRepository userRepository;
+
     @Test
-    @Transactional
     void findByProjectId() {
         Project project = new Project();
         project.setProjectName("project1");
@@ -32,16 +38,18 @@ class ProjectRepositoryTest {
     }
 
     @Test
-    @Transactional
     void findAllByUser() {
         Project project1 = new Project();
+        project1.setProjectName("project1");
         Project project2 = new Project();
+        project2.setProjectName("project2");
         User user = new User();
-        user.setUserId(1);
+
+        userRepository.save(user);
+
         project1.setUser(user);
         project2.setUser(user);
 
-        userRepository.save(user);
         projectRepository.save(project1);
         projectRepository.save(project2);
 
@@ -52,7 +60,6 @@ class ProjectRepositoryTest {
     }
 
     @Test
-    @Transactional
     void findProjectByProjectName() {
         Project project = new Project();
         project.setProjectName("projectTest");
@@ -62,7 +69,6 @@ class ProjectRepositoryTest {
     }
 
     @Test
-    @Transactional
     void findAll() {
         Project project = new Project();
         project.setProjectName("projectTest");
