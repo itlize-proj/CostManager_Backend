@@ -10,9 +10,8 @@ import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
-@EntityListeners(AuditingEntityListener.class)
 @Entity
-@Table(name="user")
+@Table(name="users")
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -46,11 +45,11 @@ public class User {
     public User() {
     }
 
-    public int getUserId() {
+    public Integer getUserId() {
         return userId;
     }
 
-    public void setUserId(int userId) {
+    public void setUserId(Integer userId) {
         this.userId = userId;
     }
 
