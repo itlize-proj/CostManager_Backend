@@ -35,3 +35,4 @@ build/
 
 ### Custom ###
 src/main/resource/application.yml
+src/main/resources/application.yml
