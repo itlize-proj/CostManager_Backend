@@ -8,9 +8,7 @@ import org.springframework.data.annotation.LastModifiedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -32,17 +30,17 @@ public class Resources {
     @JsonIgnore
     @OneToMany(targetEntity = ResourceToProject.class, cascade = CascadeType.REMOVE, mappedBy = "resources")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<ResourceToProject> projects = new ArrayList<>();
+    private Set<ResourceToProject> projects = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(targetEntity = ResourceToProject.class, cascade = CascadeType.REMOVE, mappedBy = "resources")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<ResourceColumn> resourceColumns = new ArrayList<>();
+    private Set<ResourceColumn> resourceColumns = new HashSet<>();
 
     public Resources() {
     }
 
-    public Resources(int resourceId, String resourceCode, String resourceName, Date timeCreated, Date lastUpdated, List<ResourceToProject> projects, List<ResourceColumn> resourceColumns) {
+    public Resources(int resourceId, String resourceCode, String resourceName, Date timeCreated, Date lastUpdated, Set<ResourceToProject> projects, Set<ResourceColumn> resourceColumns) {
         this.resourceId = resourceId;
         this.resourceCode = resourceCode;
         this.resourceName = resourceName;
@@ -92,19 +90,19 @@ public class Resources {
         this.lastUpdated = lastUpdated;
     }
 
-    public List<ResourceToProject> getProjects() {
+    public Set<ResourceToProject> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<ResourceToProject> projects) {
+    public void setProjects(Set<ResourceToProject> projects) {
         this.projects = projects;
     }
 
-    public List<ResourceColumn> getResourceDetails() {
+    public Set<ResourceColumn> getResourceDetails() {
         return resourceColumns;
     }
 
-    public void setResourceDetails(List<ResourceColumn> resourceColumns) {
+    public void setResourceDetails(Set<ResourceColumn> resourceColumns) {
         this.resourceColumns = resourceColumns;
     }
 

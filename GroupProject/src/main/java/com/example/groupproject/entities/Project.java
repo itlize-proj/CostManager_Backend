@@ -8,9 +8,7 @@ import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -30,19 +28,19 @@ public class Project {
     @JsonIgnore
     @OneToMany(targetEntity = ResourceToProject.class, cascade = CascadeType.REMOVE, mappedBy = "project")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<ResourceToProject> resources = new ArrayList<>();
+    private Set<ResourceToProject> resources = new HashSet<>();
 
     @JsonIgnore
     @OneToMany(targetEntity = ProjectDetails.class, cascade = CascadeType.REMOVE, mappedBy = "project")
     @LazyCollection(LazyCollectionOption.FALSE)
-    private List<ProjectDetails> projectDetails = new ArrayList<>();
+    private Set<ProjectDetails> projectDetails = new HashSet<>();
 
 
     public Project() {
     }
 
 
-    public Project(Integer projectId, String projectName, Date timeCreated, User user, List<ResourceToProject> resources, List<ProjectDetails> projectDetails) {
+    public Project(Integer projectId, String projectName, Date timeCreated, User user, Set<ResourceToProject> resources, Set<ProjectDetails> projectDetails) {
         this.projectId = projectId;
         this.projectName = projectName;
         this.timeCreated = timeCreated;
@@ -83,19 +81,19 @@ public class Project {
         this.user = user;
     }
 
-    public List<ResourceToProject> getResources() {
+    public Set<ResourceToProject> getResources() {
         return resources;
     }
 
-    public void setResources(List<ResourceToProject> resources) {
+    public void setResources(Set<ResourceToProject> resources) {
         this.resources = resources;
     }
 
-    public List<ProjectDetails> getProjectDetails() {
+    public Set<ProjectDetails> getProjectDetails() {
         return projectDetails;
     }
 
-    public void setProjectDetails(List<ProjectDetails> projectDetails) {
+    public void setProjectDetails(Set<ProjectDetails> projectDetails) {
         this.projectDetails = projectDetails;
     }
 

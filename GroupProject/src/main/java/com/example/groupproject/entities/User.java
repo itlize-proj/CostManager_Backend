@@ -7,9 +7,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @EntityListeners(AuditingEntityListener.class)
@@ -33,7 +31,7 @@ public class User {
     private String email;
 
     @CreatedDate
-    private Date timeCreated;
+    private java.sql.Date timeCreated;
     @LastModifiedDate
     private Date lastUpdated;
 
@@ -43,7 +41,7 @@ public class User {
 
     @JsonIgnore
     @OneToMany(targetEntity = Project.class, cascade = CascadeType.REMOVE, mappedBy = "user")
-    private List<Project> projects = new ArrayList<>();
+    private Set<Project> projects = new HashSet<>();
 
     public User() {
     }
@@ -128,11 +126,11 @@ public class User {
         this.role = role;
     }
 
-    public List<Project> getProjects() {
+    public Set<Project> getProjects() {
         return projects;
     }
 
-    public void setProjects(List<Project> projects) {
+    public void setProjects(Set<Project> projects) {
         this.projects = projects;
     }
 
