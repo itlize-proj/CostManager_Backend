@@ -28,4 +28,4 @@ jobs:
         key: ${{ runner.os }}-m2-${{ hashFiles('**/GroupProject/pom.xml') }}
         restore-keys: ${{ runner.os }}-m2
     - name: Run tests with Maven
-      run: mvn -B test --activate-profiles test --file GroupProject/pom.xml
+      run: mvn -B test -Dalt.build.dir=GroupProject --file GroupProject/pom.xml
