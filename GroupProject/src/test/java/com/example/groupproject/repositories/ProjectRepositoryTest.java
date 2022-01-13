@@ -15,6 +15,7 @@ import java.util.Optional;
 
 @SpringBootTest
 @RunWith(SpringRunner.class)
+@ActiveProfiles("test")
 class ProjectRepositoryTest {
     @Autowired
     private ProjectRepository projectRepository;
