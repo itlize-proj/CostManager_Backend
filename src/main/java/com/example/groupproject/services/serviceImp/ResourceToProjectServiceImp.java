@@ -32,7 +32,7 @@ public class ResourceToProjectServiceImp implements ResourceToProjectService {
             return resourceToProjectRepository.findById(resourceToProjectId).get();
         } catch (Exception E) {
             E.printStackTrace();
-            return new ResourceToProject();
+            return null;
         }
     }
 

@@ -18,13 +18,14 @@ public class ProjectDetailServiceImp implements ProjectDetailService {
     @Override
     public boolean create(ProjectDetail projectDetail, Project project) {
         // check if exists
-        if(get(projectDetail.getDetailId()) == null)
+        if(get(projectDetail.getDetailId()) != null)
             return false;
         try {
             projectDetail.setProject(project);
             projectDetailRepository.save(projectDetail);
             return true;
         } catch(Exception ex) {
+            ex.printStackTrace();
             return false;
         }
 

@@ -23,7 +23,11 @@ public class ProjectServiceImp implements ProjectService {
         if (user == null) {
             System.out.println("User is not existed");
         }
-        return projectRepository.findAllByUser(user).get();
+        try {
+            return projectRepository.findAllByUser(user).get();
+        } catch(Exception E) {
+            return null;
+        }
     }
 
 
@@ -60,6 +64,10 @@ public class ProjectServiceImp implements ProjectService {
 
     @Override
     public Project getProjectByProjectName(String name) {
-        return projectRepository.findProjectByProjectName(name).get();
+        try {
+            return projectRepository.findProjectByProjectName(name).get();
+        } catch (Exception E) {
+            return null;
+        }
     }
 }
